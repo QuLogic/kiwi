@@ -4,8 +4,6 @@ on:
   schedule:
     - cron: '0 0 * * 3'
   push:
-    tags:
-      - '*'
 
 jobs:
   build_sdist:
@@ -139,7 +137,7 @@ jobs:
             pip install delvewheel
           CIBW_REPAIR_WHEEL_COMMAND_WINDOWS: >-
             delvewheel repair -w {dest_dir} {wheel}
-          CIBW_BUILD: "cp312-* cp311-* pp39-*"
+          CIBW_BUILD: "cp312-* cp311-* pp39-* pp310-*"
           CIBW_ARCHS_MACOS: x86_64 universal2 arm64
           CIBW_ARCHS_LINUX: ${{ matrix.archs }}
           CIBW_MANYLINUX_X86_64_IMAGE: manylinux2014
